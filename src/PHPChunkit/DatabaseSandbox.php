@@ -22,25 +22,26 @@ class DatabaseSandbox
     private $sandboxDatabaseNames = [];
 
     /**
-     * @param bool
+     * @param bool $sandboxEnabled
+     * @param array $databaseNames
      */
-    public function __construct(bool $sandboxEnabled = false, array $databaseNames = [])
+    public function __construct($sandboxEnabled = false, $databaseNames = array())
     {
         $this->sandboxEnabled = $sandboxEnabled;
         $this->databaseNames = $databaseNames;
     }
 
-    public function getSandboxEnabled() : bool
+    public function getSandboxEnabled()
     {
         return $this->sandboxEnabled;
     }
 
-    public function setSandboxEnabled(bool $sandboxEnabled)
+    public function setSandboxEnabled($sandboxEnabled)
     {
         $this->sandboxEnabled = $sandboxEnabled;
     }
 
-    public function getDatabaseNames() : array
+    public function getDatabaseNames()
     {
         return $this->databaseNames;
     }

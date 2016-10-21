@@ -42,7 +42,7 @@ class Configuration
      */
     private $databaseSandbox;
 
-    public static function createFromXmlFile(string $path) : self
+    public static function createFromXmlFile($path)
     {
         if (!file_exists($path)) {
             throw new \InvalidArgumentException(sprintf('XML file count not be found at path "%s"', $path));
@@ -78,7 +78,7 @@ class Configuration
         }
 
         $events = (array) $xml->{'events'};
-        $listeners = $events['listener'] ?? null;
+        $listeners = isset($events['listener']) ? $events['listener'] : null;
 
         if ($listeners) {
             $eventDispatcher = $configuration->getEventDispatcher();
@@ -102,7 +102,7 @@ class Configuration
         return $configuration;
     }
 
-    public function setRootDir(string $rootDir) : self
+    public function setRootDir($rootDir)
     {
         if (!is_dir($rootDir)) {
             throw new \InvalidArgumentException(
@@ -115,14 +115,13 @@ class Configuration
         return $this;
     }
 
-    public function getRootDir() : string
+    public function getRootDir()
     {
         return $this->rootDir;
     }
 
-    public function setWatchDirectories(array $watchDirectories) : self
-    {
-        foreach ($watchDirectories as $key => $watchDirectory) {
+    public function setWatchDirectories(array $watchDirectories)
+    {        foreach ($watchDirectories as $key => $watchDirectory) {
             if (!is_dir($watchDirectory)) {
                 throw new \InvalidArgumentException(
                     sprintf('Watch directory "%s" does not exist.', $watchDirectory)
@@ -137,12 +136,12 @@ class Configuration
         return $this;
     }
 
-    public function getWatchDirectories() : array
+    public function getWatchDirectories()
     {
         return $this->watchDirectories;
     }
 
-    public function setTestsDirectory(string $testsDirectory) : self
+    public function setTestsDirectory($testsDirectory)
     {
         if (!is_dir($testsDirectory)) {
             throw new \InvalidArgumentException(
@@ -155,12 +154,12 @@ class Configuration
         return $this;
     }
 
-    public function getTestsDirectory() : string
+    public function getTestsDirectory()
     {
         return $this->testsDirectory;
     }
 
-    public function setBootstrapPath(string $bootstrapPath) : self
+    public function setBootstrapPath($bootstrapPath)
     {
         if (!file_exists($bootstrapPath)) {
             throw new \InvalidArgumentException(
@@ -173,12 +172,12 @@ class Configuration
         return $this;
     }
 
-    public function getBootstrapPath() : string
+    public function getBootstrapPath()
     {
         return $this->bootstrapPath;
     }
 
-    public function setPhpunitPath(string $phpunitPath) : self
+    public function setPhpunitPath($phpunitPath)
     {
         if (!file_exists($phpunitPath)) {
             throw new \InvalidArgumentException(
@@ -191,19 +190,19 @@ class Configuration
         return $this;
     }
 
-    public function getPhpunitPath() : string
+    public function getPhpunitPath()
     {
         return $this->phpunitPath;
     }
 
-    public function setDatabaseSandbox(DatabaseSandbox $databaseSandbox) : self
+    public function setDatabaseSandbox(DatabaseSandbox $databaseSandbox)
     {
         $this->databaseSandbox = $databaseSandbox;
 
         return $this;
     }
 
-    public function getDatabaseSandbox() : DatabaseSandbox
+    public function getDatabaseSandbox()
     {
         if ($this->databaseSandbox === null) {
             $this->databaseSandbox = new DatabaseSandbox();
@@ -212,28 +211,28 @@ class Configuration
         return $this->databaseSandbox;
     }
 
-    public function setDatabaseNames(array $databaseNames) : self
+    public function setDatabaseNames(array $databaseNames)
     {
         $this->getDatabaseSandbox()->setDatabaseNames($databaseNames);
 
         return $this;
     }
 
-    public function setSandboxEnabled(bool $sandboxEnabled) : self
+    public function setSandboxEnabled($sandboxEnabled)
     {
         $this->getDatabaseSandbox()->setSandboxEnabled($sandboxEnabled);
 
         return $this;
     }
 
-    public function setEventDispatcher(EventDispatcher $eventDispatcher) : self
+    public function setEventDispatcher(EventDispatcher $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
 
         return $this;
     }
 
-    public function getEventDispatcher() : EventDispatcher
+    public function getEventDispatcher()
     {
         if ($this->eventDispatcher === null) {
             $this->eventDispatcher = new EventDispatcher();

@@ -58,7 +58,7 @@ class TestWatcherStub extends TestWatcher
     /**
      * @return bool
      */
-    protected function while()
+    protected function _while()
     {
         $this->count++;
 

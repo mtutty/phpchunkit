@@ -30,7 +30,7 @@ class All
      *
      * @return int
      */
-    public function execute(InputInterface $input, OutputInterface $output) : int
+    public function execute(InputInterface $input, OutputInterface $output)
     {
         $stop = $input->getOption('stop');
         $codes = [];

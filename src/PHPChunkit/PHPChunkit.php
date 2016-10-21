@@ -13,17 +13,17 @@ class PHPChunkit
      */
     private $rootDir;
 
-    public function __construct(string $rootDir)
+    public function __construct($rootDir)
     {
         $this->rootDir = $rootDir;
     }
 
-    public function getApplication(Configuration $configuration) : TesterApplication
+    public function getApplication(Configuration $configuration)
     {
         return new TesterApplication($this->createSymfonyConsoleApplication(), $configuration);
     }
 
-    public function getConfiguration() : Configuration
+    public function getConfiguration()
     {
         $configuration = $this->loadConfiguration();
 
@@ -37,7 +37,7 @@ class PHPChunkit
         return new Application();
     }
 
-    private function loadConfiguration() : Configuration
+    private function loadConfiguration()
     {
         $configuration = $this->createConfiguration();
 
@@ -46,7 +46,7 @@ class PHPChunkit
         return $configuration;
     }
 
-    private function createConfiguration() : Configuration
+    private function createConfiguration()
     {
         $xmlPath = $this->findPHPChunkitXmlPath();
 
@@ -64,7 +64,7 @@ class PHPChunkit
         return $configuration;
     }
 
-    private function isSandboxEnabled() : bool
+    private function isSandboxEnabled()
     {
         return array_filter($_SERVER['argv'], function ($arg) {
             return strpos($arg, 'sandbox') !== false;

@@ -17,7 +17,7 @@ class TestChunker
     /**
      * @param string $testsDirectory
      */
-    public function __construct(string $testsDirectory)
+    public function __construct($testsDirectory)
     {
         $this->testFinder = new TestFinder($testsDirectory);
         $this->testCounter = new TestCounter($testsDirectory);

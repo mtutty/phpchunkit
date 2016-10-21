@@ -11,6 +11,10 @@ class FunctionalTest1Test extends BaseTest
 {
     public function testTest1()
     {
+        if ( ! extension_loaded('pdo_mysql') ) {
+            $this->markTestSkipped('pdo_mysql is not enabled');
+        }
+
         $this->assertTrue(true);
 
         $databases = parse_ini_file(realpath(__DIR__.'/../../../bin/config/databases_test.ini'));

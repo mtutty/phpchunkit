@@ -16,7 +16,7 @@
         }
     },
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=5.6.0",
         "phpunit/phpunit": "5.5.*",
         "symfony/console": "^3.1",
         "symfony/process": "^3.1",
@@ -25,7 +25,9 @@
         "symfony/event-dispatcher": "^3.1"
     },
     "require-dev": {
-        "ext-pdo": "*",
+        "ext-pdo": "*"
+    },
+    "suggest": {
         "ext-pdo_mysql": "*"
     },
     "bin": [

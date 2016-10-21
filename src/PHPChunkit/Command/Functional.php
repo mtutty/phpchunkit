@@ -150,8 +150,8 @@ class Functional
         ProgressBar $progressBar = null,
         array $chunk,
         &$outputBuffer,
-        bool $verbose,
-        array $env) : int
+        $verbose,
+        array $env)
     {
         $callback = $this->createProgressCallback(
             $progressBar, $outputBuffer, $verbose
@@ -162,7 +162,7 @@ class Functional
         return $this->testRunner->runPhpunit($command, $env, $callback);
     }
 
-    private function chunkFunctionalTests(int $numChunks, int $chunk = null) : ChunkedFunctionalTests
+    private function chunkFunctionalTests($numChunks, $chunk = null)
     {
         $chunkedFunctionalTests = (new ChunkedFunctionalTests())
             ->setNumChunks($numChunks)
@@ -176,7 +176,7 @@ class Functional
         return $chunkedFunctionalTests;
     }
 
-    private function createFunctionalChunkCommand(array $chunk) : string
+    private function createFunctionalChunkCommand(array $chunk)
     {
         $files = $this->buildFilesFromChunk($chunk);
 
@@ -185,21 +185,21 @@ class Functional
         return sprintf('-c %s --group functional', $config);
     }
 
-    private function countNumTestsInChunk(array $chunk) : int
+    private function countNumTestsInChunk(array $chunk)
     {
         return array_sum(array_map(function (array $chunkFile) {
             return $chunkFile['numTests'];
         }, $chunk));
     }
 
-    private function buildFilesFromChunk(array $chunk) : array
+    private function buildFilesFromChunk(array $chunk)
     {
         return array_map(function (array $chunkFile) {
             return $chunkFile['file'];
         }, $chunk);
     }
 
-    private function createChunkProgressBar(OutputInterface $output, array $chunk) : ProgressBar
+    private function createChunkProgressBar(OutputInterface $output, array $chunk)
     {
         $numTests = $this->countNumTestsInChunk($chunk);
 

@@ -35,7 +35,7 @@ class TestWatcher
 
         $lastTime = time();
 
-        while ($this->while()) {
+        while ($this->_while()) {
             sleep(.5);
 
             $finder = $this->createFinder();
@@ -49,7 +49,7 @@ class TestWatcher
     /**
      * @return bool
      */
-    protected function while()
+    protected function _while()
     {
         return true;
     }

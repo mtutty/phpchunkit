@@ -12,12 +12,12 @@ class TestFinder
     /**
      * @param string $testsDirectory
      */
-    public function __construct(string $testsDirectory)
+    public function __construct($testsDirectory)
     {
         $this->testsDirectory = $testsDirectory;
     }
 
-    public function findFunctionalTestFiles() : array
+    public function findFunctionalTestFiles()
     {
         $command = sprintf(
             'find %s -name *Test.php -print0 | xargs -0 grep -l "@group functional" | sort',

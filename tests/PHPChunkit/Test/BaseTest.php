@@ -20,12 +20,12 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase
         return $builder->getMock();
     }
 
-    protected function getRootDir() : string
+    protected function getRootDir()
     {
         return realpath(__DIR__.'/../../..');
     }
 
-    protected function getTestsDirectory() : string
+    protected function getTestsDirectory()
     {
         return realpath(__DIR__.'/../../../tests');
     }

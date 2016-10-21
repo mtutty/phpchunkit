@@ -12,12 +12,12 @@ class TestCounter
     /**
      * @param string $testsDirectory
      */
-    public function __construct(string $testsDirectory)
+    public function __construct($testsDirectory)
     {
         $this->testsDirectory = $testsDirectory;
     }
 
-    public function countTotalTestsInFiles(array $files) : int
+    public function countTotalTestsInFiles(array $files)
     {
         $totalTests = 0;
 
@@ -28,7 +28,7 @@ class TestCounter
         return $totalTests;
     }
 
-    public function countNumTestsInFile(string $file) : int
+    public function countNumTestsInFile($file)
     {
         $className = str_replace($this->testsDirectory, '', $file);
         $className = str_replace('.php', '', $className);

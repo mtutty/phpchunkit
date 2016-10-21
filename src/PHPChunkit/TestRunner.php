@@ -245,7 +245,7 @@ class TestRunner
      *
      * @return int
      */
-    public function runTestCommand($command, array $input = []) : int
+    public function runTestCommand($command, $input = [])
     {
         $input['command'] = $command;
 
