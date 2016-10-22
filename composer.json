@@ -1,13 +1,12 @@
 {
-    "name": "jwage/phpchunkit",
+    "name": "mtutty/phpchunkit",
     "type": "library",
     "description": "PHPUnit Test Runner",
     "keywords": ["tests", "phpunit"],
-    "homepage": "http://github.com/jwage/phpchunkit",
+    "homepage": "http://github.com/mtutty/phpchunkit",
     "license": "MIT",
     "authors": [
-        {"name": "Jonathan H. Wage", "email": "jonwage@gmail.com"},
-        {"name": "Kris Wallsmith", "email": "kris.wallsmith@gmail.com"}
+        {"name": "Michael Tutty", "email": "michael.tutty@gmail.com"}
     ],
     "autoload": {
         "psr-0": {
